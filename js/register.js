@@ -1,39 +1,77 @@
-var button = document.getElementById("btn_send").addEventListener('click',validations);
-var error = document.getElementById("error");
+//var button = document.getElementById("btn_send").addEventListener('click',validations);
+var listResults = document.getElementById("error");
+var errors =[];
 
-
-function validations (){
-       
-    var formlog=document.getElementsByClassName("formulario");
-    x1=document.getElementById("nombre").value;
-    x2=document.getElementById("email").value;
-    x3=document.getElementById("password").value;
-    x4=document.getElementById("conf-pass").value;
-
-    if (formlog.length != 0) {
-        if ((document.getElementsByClassName("field") == 4) && (document.getElementsByClassName("btn btn-gee")== 2)){
-            if (document.getElementsByClassName("ltext") == 4){
-                if((x1 != "") && (x2 != "" ) && (x3 != "") && (x4 != "")){
-                    error.innerHTML=  "validations results: every validation has passed";
-                } else {
-                    error.innerHTML=  "Empty necessary imputs";
-                }
-            }else if ((x1 == "") || (x2 == "" ) || (x3 == "") || (x4 == ""))  {
-                error.innerHTML=  "There are missing imputs and there are empty necessary imputs";
-    
-            } else {
-                error.innerHTML=  "There are missing labels";
-            }
-        
-        } else if (document.getElementsByClassName("ltext") != 4) {
-            error.innerHTML=  "There are missing labels and imputs";
-        } else {
-            error.innerHTML=  "There are missing imputs";
-        }
-    } else { 
-        error.innerHTML=   "form is not found";
-    }
-
-    
+function ValidForm (){
+    var registerForm = document.querySelector('form');
+    if(registerForm != undefined){
+        return true;
+    } else {
+        return false;
+    } 
 }
 
+function ValidButn(){
+    if (document.getElementsByClassName("btn") == 2){
+        return true;
+    } else { 
+        return false;
+    }
+}
+
+function ValidFiels(){
+    if((document.getElementsByClassName("field") == 4)){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function ValidLabs(){
+   
+    if(document.getElementsByClassName("ltext") == 4){
+      return true;
+    } else {
+        return false;
+    }
+   
+}
+
+function ValidAsociated(){
+    var inputs = document.querySelectorAll('.field').name;
+    var labels = document.querySelectorAll('.ltext').for;
+    if (inputs === labels) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+if(ValidForm() == false){
+    errors.unshift('Form is not found.');
+}
+
+if(ValidButn() == false){
+    errors.unshift('At least one button is missing.');
+}
+  
+if(ValidLabs() == false){
+    errors.unshift('At least one label is missing.');
+}
+
+if (ValidAsociated() == false) {
+    errors.unshift('Labels missing for imputs.');
+}
+
+
+if(errors.length === 0){
+    var displayedText = document.createTextNode('Every validation has been passed.')
+    listResults.appendChild(displayedText);
+  }else{
+    for(var i = 0; i < errors.length; i++){
+      var displayedText = document.createTextNode(errors[i] + '\r');
+      listResults.appendChild(displayedText);
+    }
+  }
+  
+  

@@ -44,19 +44,20 @@ input, textarea{
 	box-shadow: 0 1px 1px rgba(0,0,0,0.3); 
 }
 
-.btn-green{
+.btn{
 	color: white;
 	background-color: #3CC93F;
 }
-.btn-green:hover{
+.btn:hover{
 	background-color: #37B839;	
 }
-.btn-green:active{
+.btn:active{
 	background-color: #29962A;
 }
 
 .err{
     display: inline-block;
     text-shadow: 0 1px 0 red;
+    
 	
 }
