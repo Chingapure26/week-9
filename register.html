@@ -8,29 +8,31 @@
     <title>Register</title>
 </head>
 <body>
-    <form >
-        <p>Full Name</p>
-        <input type="text" class="field"> <br/>
+    <form class="formulario">
+        <Label class="ltext" for= "fname">Full Name</Label>
+        <input type="text" class="field" id="nombre"> 
     
-        <p>E-mail</p>
-        <input type="text" class="field"> <br/>
+        <Label class="ltext"for= "mail">E mail</Label>
+        <input type="text"  class="field" id="email"> 
     
-        <p>Pasword</p>
-        <input type="text" class="field"> <br/>
+        <Label class="ltext"for= "pass">Pasword</Label>
+        <input type="text" class="field" id="password"> 
         
-        <p>Confirm password</p>
-        <input type="text" class="field"> <br/>
+        <Label class="ltext" for= "ppass">Confirm Pasword</Label>
+        <input type="text" class="field" id="conf-pass"> 
 
-        <a href="/login.html"> Log in </a>
-    
+        <a href="login.html"> Log in </a>
+
         <p class="center-content">
-            <input type="submit" class="btn btn-green" value="Enviar Datos">
+            <input  class="btn btn-green" id="btn_send" value="Send">
         </p>
 
         <p class="center-content">
-            <input type="submit" class="btn btn-green" value="Reset Form">
+            <input class="btn btn-green" id="btn_reset" value="Reset Form">
         </p>
-    
     </form>
+
+    <div id="error" class="err"></div>
+    <script src="js/register.js"></script>
 </body>
 </html>
