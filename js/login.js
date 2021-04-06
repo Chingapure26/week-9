@@ -1,5 +1,5 @@
 var button = document.getElementById("btn_send").addEventListener('click',validations);
-var listResults = document.getElementById("error");
+var list = document.getElementById("error");
 var errors =[];
 
 function validations(){
@@ -48,6 +48,22 @@ function validations(){
         }
     }
 
+    function ValidAnchor() {
+        var anchor = document.querySelector('a').href;
+        var validHref = 'register.html';
+        if (anchor = validHref){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+
+
+    if (ValidFiels== false){
+        errors.unshift('At least one fiels is missing.');
+    }
+
     if(ValidForm() == false){
         errors.unshift('Form is not found.');
     }
@@ -64,15 +80,19 @@ function validations(){
         errors.unshift('Labels missing for imputs.');
     }
 
+    if (ValidAnchor()==false){
+        errors.unshift('Tas is invalid');
+    }
+
 
 
     if(errors.length === 0){
         var displayedText = document.createTextNode('Every validation has been passed.')
-        listResults.appendChild(displayedText);
+        list.appendChild(displayedText);
     }else{
         for(var i = 0; i < errors.length; i++){
         var displayedText = document.createTextNode(errors[i] + '\r');
-        listResults.appendChild(displayedText);
+        list.appendChild(displayedText);
         }
     }
 }
