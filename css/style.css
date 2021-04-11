@@ -57,7 +57,14 @@ input, textarea{
 
 .err{
     display: inline-block;
-    text-shadow: 0 1px 0 red;
+    color: #bb2929;
     
 	
+}
+
+.valid_name{
+    display: none;
+    display: inline-block;
+    background-color: salmon;
+    padding: 5px;
 }

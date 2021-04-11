@@ -1,102 +1,14 @@
-var lists =document.getElementById("lists");
-var list = document.getElementById("error");
 var errorN = document.getElementById("valid-name");
 var errorM = document.getElementById("valid-mail");
 var errorP= document.getElementById("valid-pass");
 var errorCP=document.getElementById("valid-confP");
-var errors =[];
 
 
-function ValidForm (){
-    var registerForm = document.querySelector('form');
-    if(registerForm != undefined){
-        
-        return true;
-    } else {
-        return false;
-    } 
-}
+document.getElementById("nombre").addEventListener('blur',ValidName);
+document.getElementById("email").addEventListener('blur',ValidMail);
+document.getElementById("password").addEventListener('blur',ValidPass);
+document.getElementById("conf-pass").addEventListener('blur',ValidCpass);
 
-function ValidButn(){
-    if (document.getElementsByClassName("btn").length == 2 ){
-        
-        return true;
-    } else { 
-        return false;
-    }
-}
-
-function ValidFiels(){
-    if (document.getElementsByClassName("field").length == 4) {
-        
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function ValidLabs(){
-
-    if(document.getElementsByClassName("ltext").length == 4){
-        
-    return true;
-    } else {
-        return false;
-    }
-
-}
-
-
-
-function ValidAsociated(){
-    var inputs = document.querySelectorAll('.field').name;
-    var labels = document.querySelectorAll('.ltext').for;
-    if (inputs === labels) {
-        
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
-    if (ValidFiels () == false){
-        errors.unshift('At least one field is missing.');
-    }
-
-    if(ValidForm() == false){
-        errors.unshift('Form is not found.');
-    }
-
-    if(ValidButn() == false){
-        errors.unshift('At least one button is missing.');
-    }
-
-    if(ValidLabs() == false){
-        errors.unshift('At least one label is missing.');
-    }
-
-    if (ValidAsociated() == false) {
-        errors.unshift('Labels missing for imputs.');
-    }
-
-
-
-
-var GroupError=function() {
-    if(errors.length === 0){
-        var displayedText = document.createTextNode('Every validation has been passed.')
-        lists.appendChild(displayedText);
-    }else{
-        for(var i = 0; i < errors.length; i++){
-        var displayedText = document.createTextNode(errors[i] + '\r');
-        lists.appendChild(displayedText);
-        }
-    }
-}
-GroupError();
-
-/*document.getElementById("nombre").addEventListener('blur',ValidName);
 
 function ValidName(){
  let  fullN=document.getElementById("nombre").value;
@@ -133,13 +45,6 @@ function ValidName(){
 
     }
 }    
-
-let pass=document.getElementById("password").value;
-/*document.getElementById("password").addEventListener('blur',ValidPass)*/  
-
-
-/*document.getElementById("email").addEventListener('blur',ValidMail);
-
 function ValidMail(){
     let mail=document.getElementById("email").value;
     var expReg= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -152,8 +57,6 @@ function ValidMail(){
     }
     
 }
-
-document.getElementById("password").addEventListener('blur',ValidPass);
 
 function ValidPass(){
     var pass= document.getElementById("password").value;
@@ -201,8 +104,6 @@ function ValidPass(){
     }
 }
 
-document.getElementById("conf-pass").addEventListener('blur',ValidCpass);
-
 function ValidCpass(){
     var pass= document.getElementById("password").value;
     var cpass=document.getElementById("conf-pass").value;
@@ -211,4 +112,4 @@ function ValidCpass(){
         var displayedText = document.createTextNode('Diferent Passwords.');
         errorCP.appendChild(displayedText);
     }
-}*/
+}

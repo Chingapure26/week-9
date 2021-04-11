@@ -11,21 +11,25 @@
 <body>
     <form >
         <Label class="ltext"for= "mail">E mail</Label>
-        <input type="text" class="field">
-    
+        <input type="email" class="field"  id="email" required>
+        <div id="valid-mail"> </div>
+       
         <Label class="ltext" for= "pass">Pasword</Label>
-        <input type="text" class="field"> 
+        <input type="password" class="field" id="password">
+        <div id="valid-pass"> </div>
 
-        <a href="register.html"> Register </a>
+        <a href="register.html" id="link"> Register </a>
     
         <p class="center-content">
-            <input class="btn" value="Log in">
+            <input type="submit" class="btn" value="Log in">
         </p>
     
-       
-    
+
     </form>
-    <div id="error" class="err"></div>
+    <div id="error" class="err">
+        <ul id="lists"></ul>
+    </div>
+    <script src="js/validations.js"></script>
     <script src="js/login.js"></script>
 </body>
 </html>
