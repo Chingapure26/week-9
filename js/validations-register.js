@@ -3,17 +3,21 @@ var errorM = document.getElementById("valid-mail");
 var errorP= document.getElementById("valid-pass");
 var errorCP=document.getElementById("valid-confP");
 
+var fullN=document.getElementById("nombre");
+var mail=document.getElementById("email");
+var pass= document.getElementById("password");
+var cpass=document.getElementById("conf-pass");
 
-document.getElementById("nombre").addEventListener('blur',ValidName);
-document.getElementById("email").addEventListener('blur',ValidMail);
-document.getElementById("password").addEventListener('blur',ValidPass);
-document.getElementById("conf-pass").addEventListener('blur',ValidCpass);
 
 
+
+
+
+fullN.onblur=ValidName
 function ValidName(){
- let  fullN=document.getElementById("nombre").value;
+ 
     
-    if (fullN.indexOf(" ") === -1){
+    if (fullN.value.indexOf(" ") === -1){
         x1=false;
        
     }else {
@@ -21,7 +25,7 @@ function ValidName(){
     }
    
     errorNam=[];
-    if(fullN.length > 5) {
+    if(fullN.value.length > 5) {
         x2=true;
         
     }else{
@@ -41,32 +45,47 @@ function ValidName(){
         for(var i = 0; i < errorNam.length; i++){
             var displayedText = document.createTextNode(errorNam[i] + '\r');
             errorN.appendChild(displayedText);
+            errorN.style.color = 'red';
+            errorN.style.display='block';
         }
 
     }
 }    
-function ValidMail(){
-    let mail=document.getElementById("email").value;
-    var expReg= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-    var Valid= expReg.test(mail);
-    if (Valid == false){
 
-        var displayedText = document.createTextNode('Invalid Email.');
-        errorM.appendChild(displayedText);
-        
-    }
-    
+fullN.onfocus=function(){
+    errorN.style.display='none'
 }
 
+
+mail.onblur=ValidMail;
+
+ function ValidMail(){
+   expReg=  /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+   
+    if (expReg.test(mail.value) == false){
+        var textM = document.createTextNode('Invalid Email.');
+        errorM.appendChild(textM);    
+        errorM.style.color = 'red';
+        errorM.style.display='block';
+        
+    }    
+}
+
+mail.onfocus=function(){
+    errorM.style.display='none'
+}
+
+pass.onblur=ValidPass;
+
 function ValidPass(){
-    var pass= document.getElementById("password").value;
-    if (pass.length >= 8){
+  
+    if (pass.value.length >= 8){
         x1=true;
     } else{
         x1=false;
     }
     var expRegN = /[0-9]/;
-    var validPN=expRegN.test(pass);
+    var validPN=expRegN.test(pass.value);
     if (validPN == false){
         x2=false;
     }else{
@@ -75,8 +94,8 @@ function ValidPass(){
     }
     var expRegl = /[a-z]/;
     var expRegL = /[A-Z]/;
-    var validl=expRegl.test(pass);
-    var validL=expRegL.test(pass);
+    var validl=expRegl.test(pass.value);
+    var validL=expRegL.test(pass.value);
     if (validl == false && validL == false) {
         x3=false;
     }else{
@@ -100,16 +119,25 @@ function ValidPass(){
         for(var i = 0; i < errorPass.length; i++){
             var displayedText = document.createTextNode(errorPass[i] + '\r');
             errorP.appendChild(displayedText);
+            errorP.style.color = 'red';
+            errorP.style.display='block';
         }
     }
 }
 
-function ValidCpass(){
-    var pass= document.getElementById("password").value;
-    var cpass=document.getElementById("conf-pass").value;
+pass.onfocus=function(){
+    errorP.style.display='none'
+}
 
-    if (pass != cpass){
+cpass.onblur=ValidCpass;
+function ValidCpass(){
+    if (pass.value != cpass.value){
         var displayedText = document.createTextNode('Diferent Passwords.');
         errorCP.appendChild(displayedText);
+        errorCP.style.color = 'red';
+        errorCP.style.display='block';
     }
+}
+cpass.onfocus=function(){
+    errorCP.style.display='none'
 }

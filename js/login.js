@@ -50,15 +50,7 @@ function ValidAsociated(){
     }
 }
 
-/* function ValidAnchor() {
-    var anchor = document.querySelector('a').href;
-    var validHref = 'register.html';
-    if (anchor = validHref){
-        return true;
-    }else {
-        return false;
-    }
-}*/
+
 function ValidAnchor() {
     var anchor = document.getElementById("link");
     var hRef = anchor.getAttribute("href");
@@ -110,65 +102,3 @@ var GroupError=function() {
 }  
 GroupError();
 
-/*document.getElementById("email").addEventListener('blur',ValidMail);
-
-function ValidMail(){
-    let mail=document.getElementById("email").value;
-    var expReg= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-    var Valid= expReg.test(mail);
-    if (Valid == false){
-
-        var displayedText = document.createTextNode('Invalid Email.');
-        errorM.appendChild(displayedText);
-        
-    }
-    
-}
-
-document.getElementById("password").addEventListener('blur',ValidPass);
-
-function ValidPass(){
-    var pass= document.getElementById("password").value;
-    if (pass.length >= 8){
-        x1=true;
-    } else{
-        x1=false;
-    }
-    var expRegN = /[0-9]/;
-    var validPN=expRegN.test(pass);
-    if (validPN == false){
-        x2=false;
-    }else{
-        x2=true;
-       
-    }
-    var expRegl = /[a-z]/;
-    var expRegL = /[A-Z]/;
-    var validl=expRegl.test(pass);
-    var validL=expRegL.test(pass);
-    if (validl == false && validL == false) {
-        x3=false;
-    }else{
-        x3=true;
-       
-    }
-
-    errorPass=[];
-    if (x1 == false ){
-        errorPass.unshift('Short Password.');
-    }
-
-    if (x2 == false){
-        errorPass.unshift('Must have number.');
-    }
-    if (x3 == false){
-        errorPass.unshift('Must have character.');
-    }
-
-    if (errorPass != 0){
-        for(var i = 0; i < errorPass.length; i++){
-            var displayedText = document.createTextNode(errorPass[i] + '\r');
-            errorP.appendChild(displayedText);
-        }
-    }
-}*/

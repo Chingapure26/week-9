@@ -16,6 +16,7 @@ form{
 input, textarea{
     border: 0;
     outline: none;
+    
 
     width: 280px;
 }
