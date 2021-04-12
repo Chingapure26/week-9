@@ -2,6 +2,8 @@ var errorM = document.getElementById("valid-mail");
 var errorP= document.getElementById("valid-pass");
 var mail=document.getElementById("email");
 var pass= document.getElementById("password");
+var btn=document.getElementById("btn");
+
 
 mail.onblur=ValidMail;
 
@@ -73,4 +75,13 @@ function ValidPass(){
 
 pass.onfocus=function(){
     errorP.style.display='none'
+}
+
+btn.onclick=function(e){
+    e.preventDefault();
+    var mess=document.getElementById("error");
+    mess.innerHTML="The data " +mail.value + " " + pass.value+ " was send correctly.";
+    fetch(`https://jsonplaceholder.typicode.com/users?email=${mail.value}`)
+        .then (response => response.json())
+        .then (json => console.log(json));
 }

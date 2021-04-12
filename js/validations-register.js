@@ -7,7 +7,7 @@ var fullN=document.getElementById("nombre");
 var mail=document.getElementById("email");
 var pass= document.getElementById("password");
 var cpass=document.getElementById("conf-pass");
-
+var btn=document.getElementById("btn_send");
 
 
 
@@ -140,4 +140,13 @@ function ValidCpass(){
 }
 cpass.onfocus=function(){
     errorCP.style.display='none'
+}
+
+btn.onclick=function(e){
+    e.preventDefault();
+    var mess=document.getElementById("error");
+    mess.innerHTML="The data " +mail.value + " " + pass.value+ " was send correctly.";
+    fetch(`https://jsonplaceholder.typicode.com/users?email=${mail.value}`)
+        .then (response => response.json())
+        .then (json => console.log(json));
 }
