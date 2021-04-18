@@ -146,7 +146,17 @@ btn.onclick=function(e){
     e.preventDefault();
     var mess=document.getElementById("error");
     mess.innerHTML="The data " +mail.value + " " + pass.value+ " was send correctly.";
-    fetch(`https://jsonplaceholder.typicode.com/users?email=${mail.value}`)
+    fetch('http://localhost:4000/register',{
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body:JSON.stringify({
+            name: fullN.value,
+            email:mail.value,
+            password: pass.value,
+        })
+    })
         .then (response => response.json())
         .then (json => console.log(json));
-}
+} 
